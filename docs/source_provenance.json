@@ -1,0 +1,185 @@
+[
+  {
+    "source": "factor_project_r2/engine/expressions.py",
+    "source_sha256": "ac6071a3cc9221eb11d3f1ccbf7cdd521e4d754e76611cf09e825d974a5cee94",
+    "target": "src/alpha_discovery/expressions.py",
+    "functions": "all",
+    "engineering_edits": {},
+    "target_sha256": "ac6071a3cc9221eb11d3f1ccbf7cdd521e4d754e76611cf09e825d974a5cee94",
+    "unchanged_ast_hashes": {
+      "Expr": "c044949b8aea03ea46ccb72694045f7de762f421996f487b6d94740c21b24b33",
+      "parse": "4651d054d342bd200f16e3d1e0c0f2cd96a59281ffcaf14b5a84b14a972fb02c",
+      "unit": "b96351b836209524f5914ae6cea91dbd05a442d56cbc2d0d35660952b9efb87f",
+      "Cache": "d01acb444567c5ba3b6e946a98e83cdc8ed1d21b00a5af015cb20de19506e11d",
+      "group_demean": "b1cad753a5cea5528ffd8345cd2fc60b2d6ea480c0d3af01ee0a03344af92554",
+      "Interpreter": "5f69910d3ec1b79873fb38fa47d3d2a559fb199a73c42515071577d8e2e4c0f7",
+      "rank_equivalence": "488e05123441116c29e7064458c7c229b514591b35ac1b0b4879530654dc159d"
+    }
+  },
+  {
+    "source": "factor_project_r2/engine/generator.py",
+    "source_sha256": "97f7c799b53f4f2605badde81a6c03b2d9d3a6f6d6d3ad22e1308f4fdb5a67e0",
+    "target": "src/alpha_discovery/generator.py",
+    "functions": "all",
+    "engineering_edits": {},
+    "target_sha256": "97f7c799b53f4f2605badde81a6c03b2d9d3a6f6d6d3ad22e1308f4fdb5a67e0",
+    "unchanged_ast_hashes": {
+      "generate": "90bd00a403b9867eee78d3597463c90ef6e5eb6456b3495fdc514956bd1c3557"
+    }
+  },
+  {
+    "source": "factor_project_r2/engine/evaluator.py",
+    "source_sha256": "9b5951eadda5c4278ed030e2d2ddeb4f2baf19742efd597eff00920b86f7afab",
+    "target": "src/alpha_discovery/evaluator.py",
+    "functions": [
+      "demean_groups",
+      "rank_rows",
+      "row_corr",
+      "delay_decay",
+      "weights",
+      "strict_returns",
+      "target_turnover",
+      "statistics",
+      "audit_weights"
+    ],
+    "engineering_edits": {},
+    "target_sha256": "55f2418b2848082c36bac8258e53436a0c8fb8050a7ed9e91f5d02125975433a",
+    "unchanged_ast_hashes": {
+      "demean_groups": "973d53d503b92ad7c9efa4bd4369638826d14f7baabba338a4b23a54b3f3546f",
+      "rank_rows": "0a713fe52e1b7c631fa84ae5f7f55102b8405225af8eb6e7d62577ec490081c7",
+      "row_corr": "7919b6f7d43787f65c7a3dfa4b783db06eb90366643cabb32fa2082219f40d40",
+      "delay_decay": "e98af7a2f064a0f5c54a30ce919e90e491dd62bc3c018a88513ac1ea7fe227c2",
+      "weights": "51cc5e1d007ecefc4c37dad401851453d36599dd205ba4be6cf649d3b03b7c3a",
+      "strict_returns": "72b5a85e1d3e070a5024b8d24bda3d5d154954b677fe1ac394ca20275cf61b56",
+      "target_turnover": "3d09520f5bfa5ff963910ff67593144427d8764a817b58ae3035473c24a1fe8e",
+      "statistics": "99fcd2fd970cf94e7c52810ad32a95322ee35141f7e3b77d92bb61168a1972ac",
+      "audit_weights": "b661832c85a76d71f0e18bfcc0643f5bbc4f455e415512fa305fa12e30dccb00"
+    }
+  },
+  {
+    "source": "factor_project_r2/engine/local_first_evaluator.py",
+    "source_sha256": "681285bda41172ae9032ff630e229160def1ce72953698e98a3a3d1fbe342b4e",
+    "target": "src/alpha_discovery/local_first_evaluator.py",
+    "functions": "all",
+    "engineering_edits": {
+      "sha(ROOT/'engine/expressions.py')": "sha(Path(__file__).with_name('expressions.py'))"
+    },
+    "target_sha256": "b87feea745531dae40694208457350da198f3753b3a43790038d3750d4d35df6",
+    "unchanged_ast_hashes": {
+      "LazyFields": "1b1f16d9c259aa0089f489a7e59373a52ee431206122dcbf4e34193e3413512f",
+      "LocalPanel": "2a82215a7bfe5b4fb941eb148e79abbadccc839f31f17df2be2c63feafce757a",
+      "AuditedCache": "fd22e823ec87fea80736e3afc4a63bd79bb0f5cc0273999bb8705c9d80c2c683",
+      "group_totals": "39e68693643f9845cb6092533d7ba5211994492dee7559e46ab8630e49397993",
+      "stable_group_center": "683cdb7164a08f62e9e1d9094a88a9a60474f9c5344b1d2414a9cf08b05af28a",
+      "constrain": "65a09bde9a8971151eb2f7e2c9e2ef9e5e1b9e2a08de02c069520907acb2d574",
+      "strict_book": "b574a995fbf7b97cccc1da227e1e57153413f642f2e37bc8326b56284eb53fe1",
+      "summarize": "84025914a09d06435f953b97799500c2434d5e18960734d43e91a9c3518ecd55",
+      "ic_summary": "84a6f40cf069f1394253b8b2f838f39f4b3ea86eaa8dcea5bd21a8aeb6a97700",
+      "fixed_direction": "65166819f888efd7fab254b309d179c96a4b95ba3f5de929490e46589c289c47",
+      "DualEvaluator": "fa182b423d78b1d9bf6bbcf1949fc4b3a61199b287ac338e634ce960ceae84b2"
+    }
+  },
+  {
+    "source": "factor_project_r2/engine/local_first_selection.py",
+    "source_sha256": "473073d621da9cc763ab48504df3e48dd7312f08aa3b997d199fe6fbe561bffe",
+    "target": "src/alpha_discovery/local_first_selection.py",
+    "functions": [
+      "quality_reasons",
+      "pareto_order"
+    ],
+    "engineering_edits": {},
+    "target_sha256": "5bf7e05a819cf581000922aab839f93923b1dcca47ae4b26cba46f39bd66bbcd",
+    "unchanged_ast_hashes": {
+      "quality_reasons": "caa278786ee5283521b2ba5dddfd12f2b710c940191a7fd2ff3b2278dc9efdfa",
+      "pareto_order": "414257a9d028ca0651a922aae344d7daab23e103b1a7151b5f25fe41c7cec724"
+    }
+  },
+  {
+    "source": "factor_project_r2/engine/signal_first.py",
+    "source_sha256": "b233133cc728e098b02bde8e326ae83d2e3abd4c5280cd4f3bf7c77c3fdecacd",
+    "target": "src/alpha_discovery/signal_first.py",
+    "functions": [
+      "clean",
+      "extract_books",
+      "exact_daily",
+      "rank_proxy",
+      "ranks",
+      "weight_distance",
+      "quality_order",
+      "pair_sample",
+      "retrieve_rank_pages",
+      "summarize_pair"
+    ],
+    "engineering_edits": {},
+    "target_sha256": "25a46c2e0ff30e420a9e71b88bdf848dfa0f646e9dc2533e166ca3e51a7b68f9",
+    "unchanged_ast_hashes": {
+      "clean": "47241915022ff59e1081f4fc41d253a3274f8331d730126ed80d613d35862972",
+      "extract_books": "1858739d40e96f9063abc0db8efd0ed81d83b30056c792c3b3434fd50880fc37",
+      "exact_daily": "47b6d36fb1ba0a8cc46ba35d1e095496952b76eed0a7a4561219e6ca053769d1",
+      "rank_proxy": "2642bb2bb65adc901ba6f258a9ea0efa02e50a37e269b08ed431e3fcf3113b7f",
+      "ranks": "9eb49472108ebd5f80d51d2da4178624db6f9811abc9872055c0ddf0f68ab83b",
+      "weight_distance": "584168f75dacc35f0df9306d2dde36f3f0762d0a6411589555f5ba69f90de4ed",
+      "quality_order": "e797d9bd7ea2ee72934b5bdad9807f74c758fcb6bdc37db22331cc4941114ea2",
+      "pair_sample": "dbe2b2b8e94f45b7bb70b06a1aa890269f28986279284d49d1aadfc5c44590f3",
+      "retrieve_rank_pages": "96b16ba0ecefe733c8e453ba03ea21b52995f9fae05524d417ae2a28a8013d7f",
+      "summarize_pair": "222a7dea26fddb0b822a765cb964820a9c0d999eaf0cc1e8081dead51a462abc"
+    }
+  },
+  {
+    "source": "factor_project_r2/tests/test_engine.py",
+    "source_sha256": "140ba914b4852c71010f25b6913d8a041dab22a0bce4eaa845917d2ff6dbbe3f",
+    "target": "tests/test_engine.py",
+    "excluded_tests": [
+      "test_budget_caps_and_no_duplicate_resume",
+      "test_guard_rejects_r1_write_before_creation",
+      "test_local_budget_boundaries"
+    ],
+    "engineering_edits": "Package import rename only; remaining test bodies unchanged"
+  },
+  {
+    "source": "factor_project_r2/tests/test_local_first.py",
+    "source_sha256": "a37e35cee93ec1521d35d1ffe2a9418e24fad8dec68d48bc91498943b243cbc7",
+    "target": "tests/test_local_first.py",
+    "excluded_tests": [
+      "test_live_platform_gate_closed_without_ledger_mutation"
+    ],
+    "engineering_edits": "Package import rename only; remaining test bodies unchanged"
+  },
+  {
+    "source": "factor_project_r2/tests/test_local_first_selection.py",
+    "source_sha256": "dde7baba8b7c4967c1f591ca038a4ce38d80a2c8cd35a608b2d26bc93e0153aa",
+    "target": "tests/test_local_first_selection.py",
+    "excluded_tests": [],
+    "engineering_edits": "Package import rename only; remaining test bodies unchanged"
+  },
+  {
+    "source": "factor_project_r2/tests/test_signal_first.py",
+    "source_sha256": "6db1a9036328acedc1d38bb16fcc420c3df1b0615ba0ad88182da3e1c6178684",
+    "target": "tests/test_signal_first.py",
+    "excluded_tests": [
+      "test_visible_checks_distinguish_omitted_zero_and_unknown",
+      "test_existing_checkpoint_read_reuse_has_no_return_evaluation"
+    ],
+    "engineering_edits": "Package import rename only; remaining test bodies unchanged"
+  },
+  {
+    "source": "factor_project/03/03_build_fundamental_panel_and_test_fundamental_factors_FINAL.ipynb",
+    "source_sha256": "dc54b19bfbadd6e752c0caeb08326c7a485470775b8fdc64805c4c98404299aa",
+    "target": "src/alpha_discovery/fundamentals.py",
+    "functions": [
+      "numeric",
+      "construct_factors"
+    ],
+    "engineering_edits": "Imports separated from notebook; function bodies unchanged"
+  },
+  {
+    "source": "factor_project_r2/engine/data.py",
+    "source_sha256": "3e40687469728007821a75771e8d01d31d25aff2320d0b97fac11e1f422e655f",
+    "target": "src/alpha_discovery/data.py",
+    "engineering_edits": "None; DATA and R1 are configured by environment in common.py",
+    "unchanged_ast_hashes": {
+      "Panel": "fe8e8e70e8f43e36d4ff4905101cd91316f1047174e07a9e4d94526a3131f832",
+      "build": "3e937674a30757a1efd0b092786b47881ba666b8666882b3def88715912e87da"
+    }
+  }
+]

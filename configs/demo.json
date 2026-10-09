@@ -1,0 +1,9 @@
+{
+  "seed": 718,
+  "stocks": 160,
+  "top_n": 120,
+  "start": "2017-01-02",
+  "end": "2024-12-31",
+  "candidate_count": 8,
+  "synthetic": true
+}

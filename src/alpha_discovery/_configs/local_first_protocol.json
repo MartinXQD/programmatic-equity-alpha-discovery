@@ -1,0 +1,118 @@
+{
+  "run_id": "LOCAL_FIRST_FULL20K_V1",
+  "method": "LOCAL_FIRST_FULL20K_V1",
+  "period": [
+    "2019-01-01",
+    "2024-12-31"
+  ],
+  "warmup_start": "2017-01-01",
+  "common_period": [
+    "2019-01-01",
+    "2023-12-31"
+  ],
+  "exposure": "All 2019-2024 and previously viewed platform outcomes are development-exposed",
+  "independent_test": "INDEPENDENT_TEST_NOT_RUN",
+  "timing": "Information F(t-1), position at close t, same-PERMNO raw return from close t to close next market date; expression lag is separate",
+  "endpoint_policy": "Position date and next market return endpoint must lie within each summary interval; continuous history is computed once without annual window or holdings resets",
+  "transparent": {
+    "delay": 1,
+    "decay": 1,
+    "neutralization": "Market net-neutral centered cross-sectional rank",
+    "gross": 2.0,
+    "cap": 0.08
+  },
+  "local_wq": {
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SIC2 before rank and final target weights",
+    "gross": 2.0,
+    "cap": 0.08
+  },
+  "numerical": {
+    "dtype": "float64",
+    "group_residual_zero_relative_tolerance": 1.4210854715202004e-14,
+    "final_net_group_gross_tolerance": 1e-10,
+    "cap_tolerance": 1e-12,
+    "verification_atol": 1e-12,
+    "verification_rtol": 1e-10,
+    "policy": "Near-zero cancellation residuals are zeroed before ranking relative to original group magnitude; final book constraints checked directly; infeasible days undefined"
+  },
+  "direction": {
+    "fixed_source": "Explicit original fixed_direction metadata only; generator reference-parent identity alone is not a signed direction",
+    "otherwise": "Choose once from 2019-2021 Local WQ train net mean under symmetric +/- target-weight costs",
+    "train_end": "2021-12-31",
+    "minimum_valid_days": 2,
+    "train_cost_bps": 5,
+    "tie_policy": "Undefined direction if zero or within 64*machine_epsilon times mean absolute gross return",
+    "application": "One sign applied to both evaluation books and static platform expression; 2022-2024 never determines the sign",
+    "dynamic_fold_signs": "Diagnostic only, never static-alpha ranking"
+  },
+  "cost": {
+    "primary_bps": 5,
+    "diagnostic_bps": [
+      0,
+      5,
+      10
+    ],
+    "definition": "T=0.5*sum(abs(delta target weight)); single-side cost=2*T*bps/10000",
+    "price_drift": false,
+    "impact_model": false
+  },
+  "missing": "Any missing nonzero-held same-security exact-next-market return makes strict daily P&L NA; weights never depend on future return visibility",
+  "statistics": "Observable metrics are conditional summaries of finite strict daily returns. Complete-path NAV/MDD/Sharpe are reported only with no missing dates; initial NAV=1. Ratios are recomputed from daily records.",
+  "selection": {
+    "protocol": "LOCAL_SELECTION_PROTOCOL_V1",
+    "scope": "Fixed-direction 2022-2024 main development ranking",
+    "signal_coverage_day_threshold": 0.5,
+    "signal_coverage_days_fraction_min": 0.8,
+    "trading_aligned_finite_ic_fraction_min": 0.8,
+    "target_defined_fraction_min": 0.8,
+    "strict_observability_conditional_min": 0.95,
+    "strict_observability_denominator": "Defined target-book dates with return endpoints in period; additionally report unconditional fraction over all period dates",
+    "coverage_periods": [
+      "full_2019_2024",
+      "development_2022_2024"
+    ],
+    "quality": [
+      "pooled gross observable mean > 0",
+      "pooled 5bps observable net mean > 0",
+      "at least 2 of 3 development years have positive 5bps observable net mean",
+      "all ranking statistics finite"
+    ],
+    "pareto_targets": [
+      "median annual net5 Sharpe higher",
+      "worst annual net5 Sharpe higher",
+      "absolute pooled net5 MDD lower"
+    ],
+    "within_layer_order": [
+      "median annual net5 Sharpe desc",
+      "worst annual net5 Sharpe desc",
+      "pooled gross Sharpe desc",
+      "absolute net5 MDD asc",
+      "candidate_id asc"
+    ],
+    "historical_platform_metrics_input": false,
+    "ranking_input": "Only full local checkpoint selection_metrics; platform exposure/identity extracted separately without Sharpe, Fitness or checks",
+    "diversity": {
+      "signal_abs_spearman_threshold": 0.8,
+      "min_common_stocks": 100,
+      "min_common_days": 126,
+      "return_abs_pearson_threshold": 0.8,
+      "min_return_pairs": 126,
+      "weight_similarity": "Daily cosine and absolute centered Pearson, pair counts retained",
+      "representatives": "Fixed local order; compress when qualifying signal OR return redundancy threshold exceeds .80; unknown similarity never equals zero; no family quota"
+    },
+    "translation": {
+      "cohorts": [
+        "EXACT",
+        "NEAR_EQUIVALENT",
+        "APPROXIMATE",
+        "NOT_TRANSLATABLE"
+      ],
+      "review": "First 300 local-qualified candidates in fixed order; continue in successive 100-candidate blocks if fewer than 20 eligible and local pool remains",
+      "no_semantic_repair": true
+    },
+    "local_catalog_max": 50,
+    "platform_shortlist_max": 20
+  }
+}

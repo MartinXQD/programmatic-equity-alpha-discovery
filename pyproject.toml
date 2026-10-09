@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "programmatic-equity-alpha-discovery"
+version = "0.1.0"
+description = "Offline formula generation, causal equity portfolio evaluation and signal redundancy research"
+requires-python = ">=3.12,<3.14"
+dependencies = ["numpy==2.3.5", "pandas==2.2.3", "scipy==1.16.3", "pyarrow==23.0.1"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "nbformat==5.10.4", "nbclient==0.10.2", "ipykernel==7.1.0"]
+paper = ["reportlab==4.4.9", "pypdf==6.10.0"]
+
+[project.scripts]
+alpha-discovery = "alpha_discovery.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+alpha_discovery = ["_configs/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

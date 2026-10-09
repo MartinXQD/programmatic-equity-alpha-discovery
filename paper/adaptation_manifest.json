@@ -1,0 +1,28 @@
+[
+  {
+    "language": "EN",
+    "source_sha256": "e47df35aa79d1c29431c593907f08dbfd595547376edc27d3e0ce43c86e470b7",
+    "adaptation": "paper/Research_Paper_Public_EN.md",
+    "changes": [
+      "Clear adaptation notice",
+      "Section 5.3 and candidate metrics table withheld",
+      "Opening example replaced with declared teaching expression",
+      "Individual correlation value and submission details removed",
+      "Private supplement reference replaced with repository aggregate/method reference",
+      "Figure 2 uses layer aggregates rather than candidate-level accumulation"
+    ]
+  },
+  {
+    "language": "CN",
+    "source_sha256": "2faa0ec04d34fbb683466a9a450e6f34f5ea48524b8c1f793ac3fdc67be5d906",
+    "adaptation": "paper/Research_Paper_Public_CN.md",
+    "changes": [
+      "Clear adaptation notice",
+      "Section 5.3 and candidate metrics table withheld",
+      "Opening example replaced with declared teaching expression",
+      "Individual correlation value and submission details removed",
+      "Private supplement reference replaced with repository aggregate/method reference",
+      "Figure 2 uses layer aggregates rather than candidate-level accumulation"
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "snapshot": "2026-10-07T22:36:53.036000+00:00",
+  "local_period": "2019-2024",
+  "ranking_period": "2022-2024",
+  "signal_similarity_period": "2019-2023",
+  "experiment": "LOCAL_FIRST_FULL20K_V1 + LOCAL_RESELECTION_V2 + SIGNAL_FIRST_SCREENING_V1 + completed frozen retained cohort",
+  "source_scope": "Author-created aggregate counts, independently reconciled against completed-cohort saved records; no platform data rows",
+  "provenance": {
+    "cohort_event_sha256": "22a56a31dc86bd6abb94511fb47bb618e4d9bdf0b118eff9beeef577f2f65a43",
+    "layer_source_sha256": "eaaa4cd69978d6a4d905ccce179a0455400d10991bc3b1c6deb16b925a34c35e",
+    "english_paper_sha256": "30188e983e67326480458d55217add7cf087012bd610e8e3afe3073f9a616830",
+    "chinese_paper_sha256": "bc900d35c02487c47aff27d8db9d5c7f77140ad7dd7f27df6c9ae61b9d3d2fbf"
+  },
+  "counts": {
+    "generated_locally_evaluated": 20000,
+    "regular": 19952,
+    "degenerate": 48,
+    "expression_review": 10117,
+    "not_assessed": 9883,
+    "approximately_representable": 3562,
+    "implementation_unconfirmed": 6555,
+    "retained": 3285,
+    "deferred": 277,
+    "valid_platform_results": 3285,
+    "new_valid_results": 3237,
+    "reused_valid_results": 48,
+    "recorded_non_correlation_pass": 82,
+    "correlation_pending_among_pass": 79,
+    "self_correlation_fail_among_pass": 2,
+    "visible_pass_production_correlation_undisplayed": 1,
+    "pareto_layers": 40,
+    "remaining_retained": 0,
+    "independent_test": "NOT_RUN"
+  },
+  "interpretation": "82 recorded applicable non-correlation passes do not establish independence, acceptance, submission eligibility or profitability."
+}

@@ -1,0 +1,76 @@
+{
+  "name": "SIGNAL_FIRST_SCREENING_V1",
+  "population": {
+    "primary_reused": 20000,
+    "quality_union": 10117,
+    "representation_eligible": 3562,
+    "old_eligible_return_buckets": 385
+  },
+  "signal": "Actual signed final constrain score from one original books_at call; direction applied afterwards",
+  "numeric": {
+    "original": "float64",
+    "exact": "float64",
+    "retrieval_only": "float32",
+    "rtol": 1e-10,
+    "atol": 1e-12
+  },
+  "dates": {
+    "first20": "one per quarter 2019-2023",
+    "expanded60": "one per month, nested",
+    "seed": "R2_SIGNAL_FIRST_V1_20261001_FIXED_CALENDAR"
+  },
+  "retrieval": {
+    "default_method": "A_FULL_CROSS_SECTION",
+    "threshold_abs": 0.8,
+    "min_stocks": 100,
+    "first_min_dates": 16,
+    "expanded_min_dates": 48,
+    "per_year_fraction": 0.8,
+    "unknown": "Conservative retain; never zero",
+    "all_above_threshold": true,
+    "alternative_B": "256 shared fixed stock coordinates after full ranks; benchmark only"
+  },
+  "confirmation": {
+    "min_days": 126,
+    "min_common_stocks": 100,
+    "min_full_date_fraction": 0.8,
+    "min_days_each_year": 126,
+    "min_fraction_each_year": 0.7,
+    "median_signed_rho": 0.97,
+    "fraction_rho_at_least_090": 0.8,
+    "weight_l1_median_max": 0.05,
+    "weight_l1_p90_max": 0.1,
+    "common_stock_fraction_min": 0.9,
+    "defined_mask_equal": true,
+    "raw_coverage_difference_max": 0.02,
+    "tail_weight_l1_p99_max": 0.2,
+    "quality_tradeoff": "Candidate must not improve any Pareto quality coordinate beyond 1e-10; otherwise secondary",
+    "opposite": "Fixed signed median<=-.80; never merge on abs alone",
+    "fullperiod": "2019-2023"
+  },
+  "ranking": {
+    "data_quality": "Unchanged V2 A/B gates including strict observability; no relaxed data gate",
+    "period": "2022-2024",
+    "fitness": "S*sqrt(abs(mean*252)/max(turnover,.125)); positive S and mean required",
+    "scale": "Decimal returns and target turnover; gross=2; NOT_HARMONIZED_WITH_BRAIN",
+    "pareto": [
+      "local_fitness_estimate",
+      "worst_annual_gross_sharpe",
+      "dev_gross_sharpe",
+      "median_annual_gross_sharpe",
+      "negative_absolute_dev_gross_mdd"
+    ],
+    "ties": [
+      "positive_gross_years desc",
+      "fitness desc",
+      "worst_year desc",
+      "gross_S desc",
+      "nodes asc",
+      "ID asc"
+    ],
+    "platform_frontier": "All nondominated locally qualified representable candidates; no head/group/return-bucket quota",
+    "dominated": "Retained complete audit/secondary queue; no unconditional platform spend",
+    "brain_outcomes_used": false,
+    "net_cost": "0/5/10 warning and tradeoff, never sole rank"
+  }
+}
