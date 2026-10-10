@@ -8,6 +8,25 @@ from test_local_first import SmallPanel
 
 ROOT=Path(__file__).resolve().parents[1]
 
+def canonical_ast_dump(node):
+    """Retain the recorded Python 3.13 AST format on Python 3.12 as well.
+
+    Parsed AST list fields use the same empty-list omission on both versions;
+    line attributes are excluded, while all populated fields retain their order.
+    """
+    if isinstance(node, ast.AST):
+        fields=[]
+        for name,value in ast.iter_fields(node):
+            if isinstance(value,list) and not value:
+                continue
+            if value is None and getattr(type(node),name,...) is None:
+                continue
+            fields.append(f'{name}={canonical_ast_dump(value)}')
+        return f'{type(node).__name__}({", ".join(fields)})'
+    if isinstance(node,list):
+        return '['+', '.join(canonical_ast_dump(value) for value in node)+']'
+    return repr(node)
+
 def test_extracted_numerical_ast_unchanged():
     provenance=json.loads((ROOT/'docs/source_provenance.json').read_text())
     checked=0
@@ -15,7 +34,7 @@ def test_extracted_numerical_ast_unchanged():
         expected=row.get('unchanged_ast_hashes',{})
         if not expected:continue
         tree=ast.parse((ROOT/row['target']).read_text())
-        actual={x.name:hashlib.sha256(ast.dump(x,include_attributes=False).encode()).hexdigest() for x in tree.body if isinstance(x,(ast.FunctionDef,ast.ClassDef))}
+        actual={x.name:hashlib.sha256(canonical_ast_dump(x).encode()).hexdigest() for x in tree.body if isinstance(x,(ast.FunctionDef,ast.ClassDef))}
         for name,value in expected.items():
             assert actual[name]==value;checked+=1
     assert checked>=30
