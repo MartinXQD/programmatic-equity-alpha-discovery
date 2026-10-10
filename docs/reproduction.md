@@ -2,7 +2,7 @@
 
 ## Scope and environment
 
-The released local numerical path is offline. Python 3.12/3.13 and dependencies are fixed in `pyproject.toml`. The tested release environment is recorded in `validation.md`. Install with `python -m pip install -e '.[dev]'`. Environment variables are read before importing the numerical modules; change them in a new process. No passwords or tokens are needed by this package.
+The released local numerical path is offline. Python 3.12/3.13 and dependencies are fixed in `pyproject.toml`. The tested release environment is recorded in `validation.md`. Install with `python -m pip install '.[dev]'`. Environment variables are read before importing the numerical modules; change them in a new process. No passwords or tokens are needed by this package.
 
 ## A. Synthetic Demo
 

@@ -37,7 +37,7 @@ def audit():
     for p in ROOT.rglob('*'):
         if not p.is_file():continue
         rel=p.relative_to(ROOT)
-        if any(x in rel.parts for x in ['.git','.venv','__pycache__','.pytest_cache','artifacts','build','dist']) or any(x.endswith('.egg-info') for x in rel.parts):continue
+        if p.name=='.DS_Store' or any(x in rel.parts for x in ['.git','.venv','__pycache__','.pytest_cache','artifacts','build','dist']) or any(x.endswith('.egg-info') for x in rel.parts):continue
         actual.add(str(rel))
     if actual!=listed:errors.append('Unlisted/missing release files: '+str(sorted(actual^listed)))
     if (ROOT/'.git').exists():

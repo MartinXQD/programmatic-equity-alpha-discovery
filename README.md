@@ -61,10 +61,11 @@ Python **3.12 or 3.13**. Install the pinned dependencies in a fresh virtual envi
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
+python -m pip install '.[dev]'
 pytest -q
 alpha-discovery demo --output artifacts/demo
 python scripts/verify_results.py
+python scripts/check_internal_links.py --ref HEAD
 ```
 
 The **Synthetic Demo** generates artificial securities and annual accounts, processes data timing, evaluates eight teaching formulas with the actual dual evaluator, screens candidates, and performs local redundancy comparisons. Its numbers have no market-performance interpretation. No WRDS or BRAIN account is needed.
@@ -72,6 +73,8 @@ The **Synthetic Demo** generates artificial securities and annual accounts, proc
 **Licensed Research Reproduction** accepts researcher-supplied, legally obtained CRSP/Compustat-derived files through an explicit schema and environment configuration. The [guide](docs/reproduction.md) describes required tables, preparation, commands, resource limits and checks. Exact historical candidate-level reconstruction additionally requires the original frozen manifest, retained locally for rights review. BRAIN data and internal implementation cannot be reconstructed offline.
 
 See the [validation record](docs/validation.md) for executed tests and separate statuses for synthetic execution, numerical regression, licensed reconstruction and saved platform evidence. CI runs small offline tests and the synthetic demo.
+
+The [internal link audit](scripts/check_internal_links.py) checks exact path names and committed targets. After an authenticated `git fetch origin main`, run `python scripts/check_internal_links.py --ref HEAD --remote-ref origin/main` to verify the published branch as well.
 
 ## Research Paper
 

@@ -31,10 +31,11 @@
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
+python -m pip install '.[dev]'
 pytest -q
 alpha-discovery demo --output artifacts/demo
 python scripts/verify_results.py
+python scripts/check_internal_links.py --ref HEAD
 ```
 
 示例生成完全合成的股票与年度财务数据，运行真实核心公式解释器、双评价器、质量筛选与重复信息审查。无需 WRDS 或 BRAIN 账号，示例数字不能解释为市场表现。
