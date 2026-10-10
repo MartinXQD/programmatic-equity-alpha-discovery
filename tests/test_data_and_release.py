@@ -89,3 +89,16 @@ def test_public_demo_runs_complete_pipeline(tmp_path):
     assert s['platform_evaluation']=='NOT_RUN'
     assert len(list(tmp_path.glob('*_daily.csv')))==8
     assert s['quality_qualified']==s['retained']+s['deferred']
+
+def test_publication_ignore_rules_block_extracts_and_disguised_data():
+    root=Path(__file__).resolve().parents[1]
+    if not (root/'.git').exists():
+        pytest.skip('Git ignore protection is validated from a repository checkout')
+    blocked=['data/renamed_notes.md','data/example.json','data/raw/anything.txt',
+             'docs/sample.csv','panel.csv.gz','accounts.tsv','dataset.dta',
+             'dataset.sas7bdat','cache.feather','panel.hdf5','backup.zip',
+             'records.pkl','.pgpass','.netrc','auth.pem','cookies.json','browser_session.json']
+    allowed=['data/README.md','data/schema.md','results/pareto_layer_yield.csv']
+    for path in blocked+allowed:
+        result=subprocess.run(['git','check-ignore','--no-index','-q','--',path],cwd=root)
+        assert result.returncode==(0 if path in blocked else 1),path

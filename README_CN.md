@@ -48,4 +48,4 @@ python scripts/check_internal_links.py --ref HEAD
 
 两份论文是明确标记的展示改编版，保留最终研究结论，移除真实表达式、Alpha ID 与单条平台明细；未删改的原论文保存在原始研究项目。原始 CRSP/Compustat/CCM 数据、账号、凭证、平台截图及完整候选记录均不上传。
 
-仓库先保持 Private。切换 Public、可选 Profile Pin 和 LICENSE 选择需要用户决定。2019–2024 全部为开发期已见数据，尚未完成独立样本检验，本地实现也不等于 BRAIN 的精确复制。
+用户已授权在完整历史审查及普通 BRAIN 用户协议核对通过后公开当前仓库；LICENSE 尚未选定。2019–2024 全部为开发期已见数据，尚未完成独立样本检验，本地实现也不等于 BRAIN 的精确复制。

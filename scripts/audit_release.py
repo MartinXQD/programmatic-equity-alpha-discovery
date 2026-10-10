@@ -7,18 +7,20 @@ def audit():
     manifest=json.loads((ROOT/'configs/release_manifest.json').read_text())
     paths=manifest['files'];errors=[]
     if paths!=sorted(set(paths)):errors.append('Whitelist is not sorted and unique')
-    banned_suffixes={'.parquet','.npy','.npz','.xlsx','.zip','.sqlite','.db','.pem','.key'}
+    banned_suffixes={'.parquet','.npy','.npz','.xlsx','.xls','.zip','.gz','.tgz','.sqlite','.sqlite3','.db','.pem','.key','.dta','.sav','.sas7bdat','.sas7bcat','.h5','.hdf','.hdf5','.feather','.arrow','.pkl','.pickle','.tsv'}
     token_patterns=[r'gh[pousr]_[A-Za-z0-9]{20,}',r'github_pat_[A-Za-z0-9_]{20,}',r'AKIA[0-9A-Z]{16}',r'-----BEGIN [A-Z ]*PRIVATE KEY-----',r'(?i)(?:password|api_key|access_token|session_cookie)\s*[:=]\s*[\"\'][^\"\']{8,}[\"\']']
     for rel in paths:
         p=ROOT/rel
         if p.is_symlink() or not p.is_file() or not p.resolve().is_relative_to(ROOT):errors.append('Invalid file: '+rel);continue
         if p.suffix in banned_suffixes or p.name.startswith('.env') or any(x in p.parts for x in ['.venv','__pycache__','.git']):errors.append('Restricted file type: '+rel)
+        if rel.startswith('data/') and rel not in {'data/README.md','data/schema.md'}:errors.append('Unreviewed data directory content: '+rel)
+        if p.suffix=='.csv' and rel!='results/pareto_layer_yield.csv':errors.append('Unreviewed tabular extract: '+rel)
         if p.stat().st_size>2_000_000:errors.append('Unexpected large artifact: '+rel)
         if p.suffix=='.pdf':
             try:
                 from pypdf import PdfReader
                 reader=PdfReader(p);text='\n'.join(x.extract_text() or '' for x in reader.pages)
-                if '/EmbeddedFiles' in str(reader.trailer):errors.append('Embedded attachments: '+rel)
+                if reader.is_encrypted or '/EmbeddedFiles' in str(reader.trailer) or '/EmbeddedFiles' in str(reader.trailer['/Root']):errors.append('Encrypted PDF or embedded attachments: '+rel)
             except ImportError:
                 # The paper extras are optional for CI; the source was audited and
                 # PDF bytes are separately inspected during the initial release.
